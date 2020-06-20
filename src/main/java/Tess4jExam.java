@@ -14,6 +14,7 @@ public class Tess4jExam {
 
         System.out.println(file.getName());
         ITesseract instance = new Tesseract();
+        //instance.setDatapath(); // tessdata의 경로를 지정. 디폴트값 ./
 
         try {
             String result = instance.doOCR(file);
