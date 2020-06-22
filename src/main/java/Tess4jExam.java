@@ -1,5 +1,6 @@
 import net.sourceforge.tess4j.ITesseract;
 import net.sourceforge.tess4j.Tesseract;
+import net.sourceforge.tess4j.Tesseract1;
 import net.sourceforge.tess4j.TesseractException;
 
 import java.io.File;
@@ -7,20 +8,21 @@ import java.io.File;
 public class Tess4jExam {
     public static void main(String[] args) {
 
-        File file = new File("D:\\image.PNG");
-        if (!file.exists()) {
-            System.out.println("파일을 읽을 수 없음");
-        }
+        File imageFile = new File("image.png");
 
-        System.out.println(file.getName());
-        ITesseract instance = new Tesseract();
-        //instance.setDatapath(); // tessdata의 경로를 지정. 디폴트값 ./
+        ITesseract instance = new Tesseract1();
 
+        System.out.println("인스턴스 생성");
+        System.out.println(imageFile.getName());
         try {
-            String result = instance.doOCR(file);
+            String result = instance.doOCR(imageFile);
+
             System.out.println(result);
+
         } catch (TesseractException e) {
-            e.printStackTrace();
+
+            System.err.println(e.getMessage());
+
         }
     }
 }
